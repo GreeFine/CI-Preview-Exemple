@@ -1,8 +1,9 @@
 FROM node:12.2.0-alpine
 
-COPY my-app /app
-
+RUN mkdir /app
 WORKDIR /app
+
+COPY ./my-app /app
 
 ENV PATH /app/node_modules/.bin:$PATH
 
