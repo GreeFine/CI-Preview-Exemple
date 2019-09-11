@@ -16,6 +16,8 @@ jobs:
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
     - name: Push docker image
+      uses: actions/docker/login@master
+      secrets: ["DOCKER_USERNAME", "DOCKER_PASSWORD"]
       run: |
         docker login
         docker push my-image-name:$(date +%s)
