@@ -12,7 +12,7 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - name: Build the Docker image
-        run: docker build . --file Dockerfile --tag my-image:$GITHUB_SHA
+        run: docker build . --file Dockerfile --tag greefine/my-image:$GITHUB_SHA
       - name: Login docker
         uses: actions/docker/login@master
         env:
