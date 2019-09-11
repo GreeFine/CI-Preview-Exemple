@@ -12,9 +12,7 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - name: Build the Docker image
-        run: docker build . --file Dockerfile --tag my-image:$DATE
-        env:
-          DATE: ${{ date +%s }}
+        run: docker build . --file Dockerfile --tag my-image:$GITHUB_SHA
       - name: Login docker
         uses: actions/docker/login@master
         env:
@@ -22,4 +20,4 @@ jobs:
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
       - name: Push docker image
         run: |
-          docker push my-image:$DATE
+          docker push my-image:$GITHUB_SHA
